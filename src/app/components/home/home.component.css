@@ -1,0 +1,75 @@
+
+.container {
+    font-family: Quicksand, sans-serif;
+    min-height: 530px;
+}
+
+.heading img {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    
+    -webkit-box-shadow: 0px -1px 48px -1px rgba(255,255,255,0.68);
+    -moz-box-shadow: 0px -1px 48px -1px rgba(255,255,255,0.68);
+    box-shadow: 0px -1px 48px -1px rgba(255,255,255,0.68);
+}
+
+.message-1, .message-2 {
+    font-size: 16px;
+    font-family: Quicksand, sans-serif;
+    margin-top: 35px;
+    line-height: 1.5;
+}
+
+.start-button {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.select-cards {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.select-cards select-card {
+    margin: 20px 10px 0px 10px;
+}
+
+.numbers-selected {
+    margin-top: 50px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.planets, .vehicles {
+    padding: 10px;
+}
+
+.time-taken {
+    color: rgb(216, 215, 215);
+    font-size: 15px;
+}
+
+.planet-data, .vehicle-data, .time {
+    color: rgb(227, 136, 255)
+}
+
+.search-button {
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.warning-text {
+    color: rgb(196, 196, 196);
+    font-size: 13px;
+}
+
+.warning-text .mat-icon {
+    vertical-align: middle;
+    font-size: 20px;
+    color: rgb(255, 255, 117);
+}
+

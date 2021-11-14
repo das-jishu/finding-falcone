@@ -1,0 +1,35 @@
+
+<div class="container">
+  <div class="top">
+    <div class="planet-image">
+      <img [src]='planetImagePath' alt="">
+    </div>
+    <div class="planet-details">
+      <div class="planet-name" *ngIf='selectedPlanet !== ""'>Planet {{ selectedPlanet }} has been added to search list</div>
+
+      <div class="planet-name" *ngIf='selectedPlanet === ""'>No planet selected</div>
+    </div>
+  </div>
+
+  <ng-select class='select' [ngModel]="selectedPlanet" [clearable]="false" placeholder="Select a planet" (change)="changePlanetSelection($event)">
+    <ng-option *ngFor="let planet of getEligiblePlanetsForSelection()" [value]="planet.name">{{ planet.name }}</ng-option>
+  </ng-select>
+
+  <div class="bottom">
+    <div class="vehicle-details">
+      <mat-radio-group
+        aria-labelledby="vehicle-radio-group-label"
+        class="example-radio-group"
+        [ngModel]="selectedVehicle" (change)="changeVehicleSelection($event)">
+        <mat-radio-button class="example-radio-button" *ngFor="let vehicle of vehicles" [value]="vehicle.name" [disabled]="!checkVehicleEligibility(vehicle)">
+          {{ vehicle.name }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="vehicle-image">
+      <img @fadeIn [src]='vehicleImagePath' *ngIf='vehicleImagePath !== ""'alt="">
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,69 @@
+<spinner [text]="'Initializing'" *ngIf="isLoading; else loaded"></spinner>
+
+<ng-template #loaded>
+
+    <div class="container text-center">
+        <div class="heading">
+            <img src="../../../assets/finding-falcone-logo.PNG" alt="">
+        </div>
+        
+        <div class="message-1">
+            In the distant galaxy of Tara B is the planet Lengaburu. After the recent war with neighbouring
+            planet Falicornia, King Shan of Lengaburu has exiled the Queen of Falicornia
+            for 15 years.
+            Queen Al Falcone is now in hiding. But if King Shan can find
+            her before the years are up, she will be exiled for another 15
+            years. 
+        </div>
+
+        <div class="message-2">
+            King Shan has received intelligence that Al Falcone is in hiding in one of these 6 planets - DonLon, Enchai, Jebing, Sapir, Lerbin & Pingasor. However he has limited resources at his disposal & can send his army to only 4 of these planets. Can you help King Shan find Queen Falcone? 
+        </div>
+
+        <button class='start-button' mat-raised-button color='accent' *ngIf='!ready' (click)="readyAll()">START THE JOURNEY</button>
+
+        <button class='start-button' mat-raised-button color='accent' *ngIf='ready' (click)="reset()">RESET</button>
+
+        <div @fadeIn class="main" *ngIf='ready'>
+            
+            <div class="select-cards">
+                <select-card [cardNumber]='1'></select-card>
+                <select-card [cardNumber]='2'></select-card>
+                <select-card [cardNumber]='3'></select-card>
+                <select-card [cardNumber]='4'></select-card>
+            </div>
+
+            <div class='numbers-selected'>
+                <div class="planets">
+                    Planets selected: 
+                    <span class='planet-data'>
+                        {{ planetsSelected.length }}/4
+                    </span>
+                </div>
+                
+                <div class="vehicles">
+                    Vehicles selected: 
+                    <span class='vehicle-data'>
+                        {{ vehiclesSelected.length }}/4
+                    </span>
+                </div>
+            </div>
+
+            <div class='time-taken'>
+                Total time taken: 
+                <span class='time'>{{ timeTaken.time }}</span>
+                hours
+            </div>
+
+            <div class='search-button'>
+                <button mat-raised-button color='accent' [disabled]="vehiclesSelected.length !== 4 || planetsSelected.length !== 4" (click)="generateResults()">START SEARCHING</button>
+            </div>
+            <div class="warning-text" *ngIf="vehiclesSelected.length !== 4 || planetsSelected.length !== 4">
+                <mat-icon>warning</mat-icon>
+                You cannot start searching until you have selected all 4 planets and vehicles.
+            </div>
+        </div>
+
+    </div>
+
+</ng-template>

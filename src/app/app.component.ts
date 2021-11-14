@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'finding-falcone';
+
+  openLinkInNewTab(link: string) {
+    window.open(link)
+  }
+
+  reset() {
+    location.reload()
+  }
 }

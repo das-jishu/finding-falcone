@@ -1,0 +1,65 @@
+
+.navbar {
+    padding: 0px 15px 0px 15px;
+    background-color: #9C27B0;
+}
+
+img {
+    border-radius: 50%;
+}
+
+.navbar-title {
+    color: whitesmoke;
+    font-size: 16px;
+    font-family: Quicksand, sans-serif; 
+}
+
+.screen-sm {
+    transform: scale(0.9);
+}
+
+button {
+    color: whitesmoke;
+    font-family: Roboto;
+}
+
+.footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid rgb(82, 80, 80);
+}
+
+.message {
+    font-size: 15px;
+    font-family: Quicksand, sans-serif;
+    color: rgb(190, 190, 190);
+}
+
+.footer-link {
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.footer-link:hover {
+    color: rgb(214, 125, 255);
+}
+
+@media (max-width:479px) {
+    .screen-lg {
+        display: none;
+    }
+
+    .screen-sm {
+        display: block;
+    }
+}
+
+@media (min-width:479px) {
+    .screen-lg {
+        display: block;
+    }
+
+    .screen-sm {
+        display: none;
+    }
+}

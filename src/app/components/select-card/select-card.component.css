@@ -1,0 +1,76 @@
+
+.container {
+    width: 320px;
+    height: 430px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    font-family: Quicksand, sans-serif;
+
+    -webkit-box-shadow: -1px 0px 51px -30px rgba(217,217,217,1);
+    -moz-box-shadow: -1px 0px 51px -30px rgba(217,217,217,1);
+    box-shadow: -1px 0px 51px -30px rgba(217,217,217,1);
+}
+
+ng-select {
+    background-color: #303030;
+}
+
+.top, .bottom {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: row;
+}
+
+.bottom {
+    margin-top: 10px;
+}
+
+.planet-image, .vehicle-image {
+    min-height: 150px;
+    width: 50%;
+}
+
+.planet-image {
+    padding-top: 25px;
+}
+
+.planet-details, .vehicle-details {
+    width: 50%;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    font-size: 15px;
+}
+
+.planet-image img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    -webkit-box-shadow: -1px 0px 11px 8px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 0px 11px 8px rgba(0,0,0,0.75);
+    box-shadow: -1px 0px 11px 8px rgba(0,0,0,0.75);
+}
+
+.vehicle-image img {
+    margin-left: 20px;
+    height: 130px;
+    width: 80px;
+    border-radius: 30%;
+    -webkit-box-shadow: -1px 0px 21px 17px rgb(255, 255, 255);
+    -moz-box-shadow: -1px 0px 21px 17px rgb(255, 255, 255);
+    box-shadow: -1px 0px 21px 17px rgb(255, 255, 255);
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.example-radio-button {
+    margin: 5px;
+}

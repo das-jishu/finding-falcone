@@ -1,0 +1,17 @@
+<div class='container text-center'>
+    <div class='error-code'>
+        {{ errorCode }}
+    </div>
+    <div class='error-text'>
+        <span class='def'>
+            <mat-icon color='warn'>error_outline</mat-icon>
+        </span>
+        <span>
+            Uh-oh! Looks like the page ran into an error.
+        </span> 
+    </div>
+    <div class="error-text-2">
+        While we look into the error, you can try again.
+    </div>
+    <button mat-raised-button color="accent" class='try-again' (click)='redirectToHome()'>TRY AGAIN</button>
+</div>

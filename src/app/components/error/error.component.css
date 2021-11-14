@@ -1,0 +1,28 @@
+
+.container {
+    min-height: 530px;
+}
+
+.error-code {
+    font-family: Quicksand, sans-serif;
+    font-size: 80px;
+    padding-top: 100px;
+    margin-bottom: 80px;
+}
+.error-text {
+    font-family: Quicksand, sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.error-text-2 {
+    font-family: Quicksand, sans-serif;
+    color: rgb(172, 172, 172);
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.mat-icon {
+    vertical-align: middle;
+    font-size: 22px;
+}

@@ -1,0 +1,25 @@
+<spinner [text]="'Searching for Queen Falcone'" *ngIf="isLoading; else loaded"></spinner>
+
+<ng-template #loaded>
+
+<div class="container text-center">
+    <div class="heading">
+        <img src="../../../assets/finding-falcone-logo.PNG" alt="">
+    </div>
+
+    <div class="success" *ngIf="result.status === 'success'">
+        <div class="success-message">Congratulations! You found Queen Falcone on planet 
+        <span class='planet-name'>{{ result.planet_name }}</span>. King Shan is pleased! Try again to find her using lesser hours!</div>
+        <div class="time">Total time taken: 
+        <span class='time-taken'>{{ timeTaken }}</span>    
+        hours.</div>
+    </div>
+
+    <div class="failure" *ngIf="result.status === 'false'">
+        Alas! You could not find Queen Falcone. However, King Shan will allow you to try again. Better luck this time!
+    </div>
+
+    <button class='reset-button' mat-raised-button color='accent' (click)="reset()">TRY AGAIN</button>
+</div>
+
+</ng-template>
