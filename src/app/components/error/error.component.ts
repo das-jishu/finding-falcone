@@ -12,7 +12,7 @@ export class ErrorComponent {
 
   constructor( private router: Router, private route: ActivatedRoute ) { 
     this.route.params.subscribe( param => {
-      if (!param || !param.errorCode || typeof(param.errorCode) !== 'number')
+      if (!param || !param.errorCode || typeof(param.errorCode) !== 'number' || param.errorCode < 0)
         return
 
       this.errorCode = param.errorCode
@@ -21,7 +21,11 @@ export class ErrorComponent {
 
   redirectToHome() {
     this.router.navigate(['/home']).then(() => {
-      window.location.reload();
+      this.reloadPage();
     })
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 }

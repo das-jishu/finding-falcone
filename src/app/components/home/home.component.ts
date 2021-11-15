@@ -29,6 +29,9 @@ export class HomeComponent implements OnInit {
   timeTaken: { time: number } = { time: 0 }
 
   constructor( private _apiService: APIService, private _dataService: DataService, private router: Router, private _logService: LogService ) { 
+  }
+
+  ngOnInit(): void {
     this._logService.log(LogLevel.INFO, 'Home Component initialized.')
 
     this._dataService.initializeAll();
@@ -50,9 +53,6 @@ export class HomeComponent implements OnInit {
     ).subscribe(() => {
       this.isLoading = false
     });
-  }
-
-  ngOnInit(): void {
   }
 
   readyAll() {

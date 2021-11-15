@@ -93,6 +93,13 @@ describe('DataService', () => {
     expect(returnCode).toBe(0)
   })
 
+  it('should not remove planet from selected for invalid planet name and give return code as 0 for unsuccessful deletion', () => {
+    service.selectedPlanets = []
+    let returnCode: number = service.removePlanetFromSelected('Test Planet')
+
+    expect(returnCode).toBe(0)
+  })
+
   it('should not remove planet from selected for blank name but give return code as 1', () => {
     let returnCode: number = service.removePlanetFromSelected('')
 
@@ -143,6 +150,13 @@ describe('DataService', () => {
     expect(returnCode).toBe(0)
   })
 
+  it('should not remove vehicle from selected for invalid vehicle name and give return code as 0 for unsuccessful deletion', () => {
+    service.selectedVehicles = []
+    let returnCode: number = service.removeVehicleFromSelected('Test Vehicle', 'Test Planet')
+
+    expect(returnCode).toBe(0)
+  })
+
   it('should not remove vehicle from selected for valid vehicle but invalid planet and give return code as 0 for unsuccessful insertion', () => {
     let returnCode: number = service.removeVehicleFromSelected('Test Vehicle', 'No such planet')
 
@@ -177,6 +191,11 @@ describe('DataService', () => {
   it('should return false if vehicle is not eligible', () => {
     service.allVehicles[0].total_used = 2
     expect(service.checkVehicleEligibility(service.allVehicles[0], 'Test Planet')).toBeFalsy();
+  })
+
+  it('should return false if vehicle is not eligible', () => {
+    service.allVehicles[0].total_used = 2
+    expect(service.checkVehicleEligibility(service.allVehicles[0], 'No such Planet')).toBeFalsy();
   })
 
   it('should return true if it is ready for result', () => {
@@ -221,6 +240,12 @@ describe('DataService', () => {
     expect(service.getAllVehicles).toHaveBeenCalled();
   }) 
 
+  it('should return observable when called', () => {
+    let apiService = TestBed.get(APIService)
+    spyOn(apiService, 'getAllPlanets').and.returnValue(of([{name: 'Test', distance: 10}]))
+    expect(service.allPlanets.length).toBe(1)
+  })
+
   it('should return observable of all planets', () => {
     expect(service.getPlanets()._subscribe.length).toBe(1)
   })
@@ -241,4 +266,12 @@ describe('DataService', () => {
     expect(service.getTimeTaken()._subscribe.length).toBe(1)
   })
   
+  it('should call error handler', () => {
+    expect(service.errorHandler({}, true)._subscribe.length).toEqual(1)
+  })
+
+  it('should call error handler', () => {
+    expect(service.errorHandler({}, false)._subscribe.length).toEqual(1)
+  })
+
 });

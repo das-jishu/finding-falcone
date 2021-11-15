@@ -1,9 +1,12 @@
+import { LogService } from './../../services/log.service';
+import { DataService } from './../../services/data-service.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import { ResultComponent } from './result.component';
+import { of } from 'rxjs';
 
 const router = {
   navigate: jasmine.createSpy('navigate')
@@ -33,6 +36,18 @@ describe('ResultComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should load result when created', () => {
+    let service = TestBed.get(DataService)
+    spyOn(service, 'getResults').and.returnValue(of({status: 'success', planet_name: 'Test'}))
+    spyOn(service, 'getTotalTimeTaken').and.returnValue(10)
+
+    fixture.detectChanges();
+    component.ngOnInit();
+    expect(component.isLoading).toBeFalsy();
+    expect(component.timeTaken).toBe(10)
+    expect(component.result).toEqual({status: 'success', planet_name: 'Test'})
+  })
 
   it('should call reset when button is clicked', () => {
     fakeAsync(() => {
@@ -77,4 +92,14 @@ describe('ResultComponent', () => {
       expect(element.innerText).toContain('200')
     })
   })
+
+  it('should reset', () => {
+    spyOn(component, 'reloadPage').and.callFake(function() {})
+    let service = TestBed.get(LogService)
+    spyOn(service, 'log')
+    component.reset()
+    expect(component.reloadPage).toHaveBeenCalled();
+    expect(service.log).toHaveBeenCalled();
+  })
+
 });

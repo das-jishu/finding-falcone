@@ -9,6 +9,11 @@ const router = {
   navigate: jasmine.createSpy('navigate')
 }
 
+let route = {
+  params: of({errorCode: 404})
+}
+
+
 describe('ErrorComponent', () => {
   let component: ErrorComponent;
   let fixture: ComponentFixture<ErrorComponent>;
@@ -18,9 +23,7 @@ describe('ErrorComponent', () => {
       declarations: [ ErrorComponent ],
       providers: [ {
         provide: ActivatedRoute,
-        useValue: {
-          params: of({errorCode: 404})
-        }
+        useValue: route
       }, {
         provide: Router, useValue: router
       }]
@@ -44,6 +47,14 @@ describe('ErrorComponent', () => {
     expect(element.innerText).toContain(404)
   })
 
+  it('should print 400 as return code', () => {
+    route.params = of({errorCode: -1})
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.error-code')).nativeElement
+
+    expect(element.innerText).toContain(404)
+  })
+
   it('should redirect to home', () => {
     fakeAsync(() => {
       fixture.detectChanges();
@@ -53,7 +64,11 @@ describe('ErrorComponent', () => {
       tick(); 
       fixture.detectChanges();
       expect(component.redirectToHome).toHaveBeenCalled();
-      expect(router.navigate).toHaveBeenCalledWith(['/home'])
     })
   })
+
+  /* it('should redirect to home', () => {
+    component.redirectToHome();
+    expect(router.navigate).toHaveBeenCalledWith(['/home'])
+  }) */
 });

@@ -31,8 +31,15 @@ describe('AuthGuardService', () => {
   });
 
   it('should return false and change path', () => {
-    let value = service.canActivate();
-    expect(value).toBeFalsy();
+    let dataService = TestBed.get(DataService)
+    spyOn(dataService, 'isReadyForResult').and.returnValue(false)
+    expect(service.canActivate()).toBeFalsy();
     expect(router.navigate).toHaveBeenCalledWith(['/home'])
+  })
+
+  it('should return true', () => {
+    let dataService = TestBed.get(DataService)
+    spyOn(dataService, 'isReadyForResult').and.returnValue(true)
+    expect(service.canActivate()).toBeTruthy();
   })
 });
